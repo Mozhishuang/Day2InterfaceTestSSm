@@ -1,0 +1,31 @@
+1.controller
+根据请求方式get 或者 post 来对方法加上注解 RequestMapping("/访问路径") 或者postmapping("/请求路径")
+需要用到的servie进行加上autowired注解或者resource注解
+例如
+    @Autowired
+    private UserService userService;
+2.service
+先在service接口添加方法，给service加上impl包存放service接口类的实现方法例如userservice在impl里面存放userserviceImpl.
+在业务层实现类里面书写业务逻辑调用dao（mapper）层代码
+3.dao
+在dao（mapper）层中，同样也是接口
+在resource路径下的mapper或mappers（视个人情况而定）里面书写dao层的数据库代码实现
+mapper.xml通用的文件头部分:
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间：对应DAO接口的全路径  此处路径需要修改成相对应的dao类-->
+<mapper namespace="com.ssm.dao.UserDao">
+</mapper>
+在mapper标签里面书写sql,
+tips:安装mybatisX插件，可以直接只用写sql,修改好命名空间之后，直接点击报错处，generate就可以
+
+MyBatis
+MyBatis（前身是iBatis）是一个支持普通SQL查询、存储过程以及高级映射的持久层框架，
+它消除了几乎所有的JDBC代码和参数的手动设置以及对结果集的检索，并使用简单的XML或注解进行配置和原始映射，
+用以将接口和Java的POJO（Plain Old Java Object，普通Java对象）映射成数据库中的记录，
+使得Java开发人员可以使用面向对象的编程思想来操作数据库。
+MyBatis 框架也被称之为 ORM（Object/Relational Mapping，即对象关系映射）框架。
+所谓的 ORM 就是一种为了解决面向对象与关系型数据库中数据类型不匹配的技术，它通过描述Java对象与数据库表之间的映射关系，
+自动将Java应用程序中的对象持久化到关系型数据库的表中。
